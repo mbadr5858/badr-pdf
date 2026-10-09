@@ -31,6 +31,12 @@ export function resolveFontUrl(
   fontFamily: string,
   env: OcrFontEnv = getDefaultFontEnv()
 ): string {
+  // BADR PDF: Arabic font ships with the app (works offline and in the
+  // Android app, and does not depend on a third-party CDN).
+  if (fontFamily === 'Noto Naskh Arabic') {
+    return import.meta.env.BASE_URL + 'fonts/NotoNaskhArabic-Regular.ttf';
+  }
+
   const fontBaseUrl = normalizeFontBaseUrl(env.VITE_OCR_FONT_BASE_URL);
 
   if (fontBaseUrl) {

@@ -599,6 +599,9 @@ async function launchEditor(file: File) {
           PdfEngine: { fallbackFonts: Map<string, Uint8Array> };
         };
       setupFallbackFonts(appModule, PdfEngine.fallbackFonts);
+      // BADR PDF: load the Arabic font up front so new Arabic text never
+      // falls back to the document's original (incomplete) font.
+      void loadFallbackFonts(PdfEngine.fallbackFonts, ['ara']);
       appModule.setOnSaved((kb) => {
         showAlert(
           t('common.success'),
