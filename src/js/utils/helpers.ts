@@ -1,3 +1,4 @@
+import '../lang-toggle.js';
 import '../native-download.js';
 import createModule from '@neslinesli93/qpdf-wasm';
 import type { QpdfInstanceExtended } from '@/types';

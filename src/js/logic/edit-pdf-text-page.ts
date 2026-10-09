@@ -1,3 +1,4 @@
+import '../lang-toggle.js';
 import '../native-download.js';
 import '@phosphor-icons/web/regular';
 import { createIcons, icons } from 'lucide';

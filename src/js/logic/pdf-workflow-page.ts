@@ -1,3 +1,4 @@
+import '../lang-toggle.js';
 import '../native-download.js';
 import { showAlert } from '@/js/ui.js';
 import { createWorkflowEditor, updateNodeDisplay } from '@/js/workflow/editor';

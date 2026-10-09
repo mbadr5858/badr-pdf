@@ -1,3 +1,4 @@
+import './lang-toggle.js';
 import './native-download.js';
 import './utils/map-upsert-polyfill.js';
 import './utils/setup-pdf-worker.js';
