@@ -1,3 +1,4 @@
+import './native-download.js';
 import './utils/map-upsert-polyfill.js';
 import './utils/setup-pdf-worker.js';
 import { categories } from './config/tools.js';

@@ -1,3 +1,4 @@
+import '../native-download.js';
 import createModule from '@neslinesli93/qpdf-wasm';
 import type { QpdfInstanceExtended } from '@/types';
 import { showLoader, hideLoader, showAlert } from '../ui.js';

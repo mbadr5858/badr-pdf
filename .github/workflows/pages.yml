@@ -27,6 +27,11 @@ jobs:
           VITE_BRAND_LOGO: images/badr-logo.svg
           VITE_FOOTER_TEXT: © 2026 BADR PDF — Based on BentoPDF (AGPL-3.0)
           NODE_OPTIONS: --max-old-space-size=6144
+      - run: node scripts/generate-i18n-pages.mjs
+        env:
+          BASE_URL: /badr-pdf/
+          SITE_URL: https://mbadr5858.github.io/badr-pdf
+          NODE_OPTIONS: --max-old-space-size=6144
       - run: find dist -name '*.br' -delete -o -name '*.gz' -delete; touch dist/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:

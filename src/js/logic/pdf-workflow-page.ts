@@ -1,3 +1,4 @@
+import '../native-download.js';
 import { showAlert } from '@/js/ui.js';
 import { createWorkflowEditor, updateNodeDisplay } from '@/js/workflow/editor';
 import type { WorkflowEditor } from '@/js/workflow/editor';

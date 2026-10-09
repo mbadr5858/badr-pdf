@@ -1,3 +1,4 @@
+import '../native-download.js';
 import '@phosphor-icons/web/regular';
 import { createIcons, icons } from 'lucide';
 import { showAlert, showLoader, hideLoader } from '../ui.js';

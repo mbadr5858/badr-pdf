@@ -1,0 +1,50 @@
+name: Build BADR PDF Android app
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: android
+  cancel-in-progress: true
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - run: npm ci --legacy-peer-deps
+      - name: Build web app
+        run: npx vite build && node scripts/generate-i18n-pages.mjs
+        env:
+          VITE_BRAND_NAME: BADR PDF
+          VITE_BRAND_LOGO: images/badr-logo.svg
+          VITE_FOOTER_TEXT: © 2026 BADR PDF — Based on BentoPDF (AGPL-3.0)
+          NODE_OPTIONS: --max-old-space-size=6144
+      - name: Create Android project
+        run: |
+          ./scripts/prepare-android.sh
+          npx cap add android
+          npx capacitor-assets generate --android
+          npx cap sync android
+      - name: Build APK
+        working-directory: android
+        run: ./gradlew assembleDebug --no-daemon
+      - run: cp android/app/build/outputs/apk/debug/app-debug.apk BADR-PDF.apk
+      - name: Publish APK to the "android-latest" release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: android-latest
+          name: BADR PDF — Android
+          body: Download BADR-PDF.apk on your Android phone and install it.
+          prerelease: false
+          make_latest: true
+          files: BADR-PDF.apk

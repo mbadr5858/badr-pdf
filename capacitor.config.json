@@ -1,0 +1,7 @@
+{
+  "appId": "io.github.mbadr5858.badrpdf",
+  "appName": "BADR PDF",
+  "webDir": "dist-android",
+  "android": { "allowMixedContent": false },
+  "server": { "androidScheme": "https" }
+}

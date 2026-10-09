@@ -1,3 +1,4 @@
+import '../native-download.js';
 import { repairPdf } from './repair-pdf.js';
 import { state } from '../state.js';
 import { renderFileDisplay } from '../ui.js';
