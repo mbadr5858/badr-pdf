@@ -707,6 +707,7 @@ export default defineConfig(() => {
           ),
           'edit-pdf': resolve(__dirname, 'src/pages/edit-pdf.html'),
           'edit-pdf-text': resolve(__dirname, 'src/pages/edit-pdf-text.html'),
+          'cv-builder': resolve(__dirname, 'src/pages/cv-builder.html'),
           'jpg-to-pdf': resolve(__dirname, 'src/pages/jpg-to-pdf.html'),
           'sign-pdf': resolve(__dirname, 'src/pages/sign-pdf.html'),
           'crop-pdf': resolve(__dirname, 'src/pages/crop-pdf.html'),

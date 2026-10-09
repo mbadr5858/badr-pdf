@@ -4,6 +4,13 @@ const baseCategories = [
     name: 'Popular Tools',
     tools: [
       {
+        href: import.meta.env.BASE_URL + 'cv-builder.html',
+        name: 'CV Builder',
+        icon: 'ph-identification-card',
+        subtitle:
+          'Create an ATS-friendly CV in Arabic or English from ready templates and download it as PDF.',
+      },
+      {
         href: import.meta.env.BASE_URL + 'edit-pdf-text.html',
         name: 'Edit PDF Text',
         icon: 'ph-cursor-text',

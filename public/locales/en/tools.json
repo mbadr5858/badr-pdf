@@ -1323,5 +1323,9 @@
   "protectPdf": {
     "name": "Protect PDF",
     "subtitle": "Password protect a PDF with strong AES encryption."
+  },
+  "cvBuilder": {
+    "name": "CV Builder",
+    "subtitle": "Create an ATS-friendly CV in Arabic or English from ready templates and download it as PDF."
   }
 }

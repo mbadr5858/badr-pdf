@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Create a professional CV in Arabic or English with ready templates and download it as PDF. Free, private, runs in your browser."
+    />
+    <meta name="robots" content="index, follow" />
+    <title>CV Builder - BADR PDF</title>
+    <link href="/src/css/styles.css" rel="stylesheet" />
+    <link href="/src/css/cv-builder.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  </head>
+
+  <body class="antialiased bg-gray-900">
+    {{> navbar }}
+
+    <main class="cvb">
+      <header class="cvb-head">
+        <div>
+          <h1 class="cvb-title" data-t="title">صانع السيرة الذاتية</h1>
+          <p class="cvb-sub" data-t="subtitle">
+            املأ بياناتك، اختر قالبًا، ونزّل سيرتك الذاتية PDF. بياناتك لا تغادر
+            جهازك.
+          </p>
+        </div>
+        <div class="cvb-head-actions">
+          <div class="cvb-seg" role="group" aria-label="CV language">
+            <button type="button" data-cvlang="ar">العربية</button>
+            <button type="button" data-cvlang="en">English</button>
+          </div>
+          <button type="button" class="cvb-btn ghost" id="cvSample" data-t="sample">
+            تعبئة بنموذج جاهز
+          </button>
+          <button type="button" class="cvb-btn ghost" id="cvClear" data-t="clear">
+            مسح الكل
+          </button>
+        </div>
+      </header>
+
+      <section class="cvb-templates" aria-label="Templates">
+        <h2 class="cvb-h2" data-t="templates">نماذج السيرة الذاتية</h2>
+        <div class="cvb-tpl-row" id="tplRow"></div>
+      </section>
+
+      <div class="cvb-grid">
+        <form class="cvb-form" id="cvForm" autocomplete="on" onsubmit="return false">
+          <fieldset>
+            <legend data-t="personal">البيانات الشخصية</legend>
+            <div class="cvb-photo">
+              <img id="photoPreview" alt="" hidden />
+              <label class="cvb-btn ghost small">
+                <span data-t="photo">صورة شخصية (اختياري)</span>
+                <input type="file" id="photoInput" accept="image/*" hidden />
+              </label>
+              <button type="button" class="cvb-link" id="photoRemove" hidden data-t="remove">إزالة</button>
+            </div>
+            <label><span data-t="name">الاسم الكامل</span><input name="name" /></label>
+            <label><span data-t="jobTitle">المسمى الوظيفي</span><input name="jobTitle" /></label>
+            <div class="cvb-two">
+              <label><span data-t="email">البريد الإلكتروني</span><input name="email" type="email" dir="ltr" /></label>
+              <label><span data-t="phone">الهاتف</span><input name="phone" dir="ltr" /></label>
+            </div>
+            <div class="cvb-two">
+              <label><span data-t="location">المدينة / الدولة</span><input name="location" /></label>
+              <label><span data-t="link">رابط (LinkedIn / موقع)</span><input name="link" dir="ltr" /></label>
+            </div>
+            <label><span data-t="summary">نبذة مختصرة</span><textarea name="summary" rows="4"></textarea></label>
+          </fieldset>
+
+          <fieldset>
+            <legend data-t="experience">الخبرات العملية</legend>
+            <div id="expList" class="cvb-list"></div>
+            <button type="button" class="cvb-btn ghost small" data-add="experience" data-t="addExp">+ إضافة خبرة</button>
+          </fieldset>
+
+          <fieldset>
+            <legend data-t="education">التعليم</legend>
+            <div id="eduList" class="cvb-list"></div>
+            <button type="button" class="cvb-btn ghost small" data-add="education" data-t="addEdu">+ إضافة مؤهل</button>
+          </fieldset>
+
+          <fieldset>
+            <legend data-t="more">مهارات وغيرها</legend>
+            <label><span data-t="skills">المهارات (افصل بينها بفاصلة)</span><textarea name="skills" rows="2"></textarea></label>
+            <label><span data-t="languages">اللغات (افصل بينها بفاصلة)</span><input name="languages" /></label>
+            <label><span data-t="certs">الشهادات والدورات (كل واحدة في سطر)</span><textarea name="certs" rows="3"></textarea></label>
+          </fieldset>
+        </form>
+
+        <section class="cvb-preview-wrap" aria-label="Preview">
+          <div class="cvb-preview-bar">
+            <span data-t="preview">معاينة</span>
+            <div class="cvb-color" id="colorRow" aria-label="Color"></div>
+            <button type="button" class="cvb-btn" id="cvDownload" data-t="download">تحميل PDF</button>
+          </div>
+          <div class="cvb-paper-scroller" id="paperScroller">
+            <div class="cvb-paper-scale" id="paperScale">
+              <article id="cvPaper" class="cv-paper"></article>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    {{> footer }}
+    <script type="module" src="/src/js/utils/lucide-init.ts"></script>
+    <script type="module" src="/src/js/logic/cv-builder-page.ts"></script>
+    <script type="module" src="/src/js/mobileMenu.ts"></script>
+    <script type="module" src="/src/js/main.ts"></script>
+  </body>
+</html>

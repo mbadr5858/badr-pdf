@@ -1,0 +1,563 @@
+@font-face {
+  font-family: 'BADR Naskh';
+  src: url('/fonts/NotoNaskhArabic-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'BADR Naskh';
+  src: url('/fonts/NotoNaskhArabic-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+/* ---------- Builder shell (dark app chrome) ---------- */
+.cvb {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+  color: #e5e7eb;
+  font-family: 'Cairo', 'Inter', 'BADR Naskh', system-ui, sans-serif;
+}
+.cvb-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.cvb-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+}
+.cvb-sub {
+  color: #9ca3af;
+  margin-top: 4px;
+  max-width: 620px;
+}
+.cvb-head-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.cvb-seg {
+  display: inline-flex;
+  border: 1px solid #374151;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.cvb-seg button {
+  padding: 6px 14px;
+  font-size: 14px;
+  color: #d1d5db;
+  background: transparent;
+}
+.cvb-seg button.on {
+  background: #4f46e5;
+  color: #fff;
+}
+.cvb-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  background: #4f46e5;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.cvb-btn:hover {
+  background: #6366f1;
+}
+.cvb-btn.ghost {
+  background: transparent;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+.cvb-btn.ghost:hover {
+  background: #1f2937;
+}
+.cvb-btn.small {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+.cvb-btn[disabled] {
+  opacity: 0.6;
+  cursor: wait;
+}
+.cvb-link {
+  color: #f87171;
+  font-size: 13px;
+  text-decoration: underline;
+}
+.cvb-h2 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.cvb-templates {
+  margin-bottom: 20px;
+}
+.cvb-tpl-row {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+.cvb-tpl {
+  flex: 0 0 auto;
+  width: 132px;
+  border: 2px solid #374151;
+  border-radius: 12px;
+  padding: 8px;
+  background: #111827;
+  color: #d1d5db;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.cvb-tpl.on {
+  border-color: #6366f1;
+  color: #fff;
+}
+.cvb-tpl-thumb {
+  height: 150px;
+  border-radius: 6px;
+  background: #fff;
+  margin-bottom: 6px;
+  overflow: hidden;
+  position: relative;
+}
+.cvb-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 430px) minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 960px) {
+  .cvb-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.cvb-form fieldset {
+  border: 1px solid #1f2937;
+  background: #111827;
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+.cvb-form legend {
+  padding: 0 6px;
+  font-weight: 700;
+  color: #fff;
+}
+.cvb-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: #9ca3af;
+}
+.cvb-form label > span {
+  display: block;
+  margin-bottom: 4px;
+}
+.cvb-form input,
+.cvb-form textarea {
+  width: 100%;
+  background: #0b1220;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  padding: 8px 10px;
+  color: #f3f4f6;
+  font-size: 14px;
+  font-family: inherit;
+}
+.cvb-form input:focus,
+.cvb-form textarea:focus {
+  outline: 2px solid #6366f1;
+  border-color: transparent;
+}
+.cvb-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+@media (max-width: 480px) {
+  .cvb-two {
+    grid-template-columns: 1fr;
+  }
+}
+.cvb-photo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.cvb-photo img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.cvb-list .cvb-item {
+  border: 1px dashed #374151;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  position: relative;
+}
+.cvb-item-del {
+  position: absolute;
+  inset-inline-end: 8px;
+  top: 6px;
+  color: #f87171;
+  font-size: 18px;
+  line-height: 1;
+}
+.cvb-preview-wrap {
+  position: sticky;
+  top: 80px;
+}
+.cvb-preview-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.cvb-color {
+  display: flex;
+  gap: 6px;
+}
+.cvb-color button {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+}
+.cvb-color button.on {
+  border-color: #fff;
+}
+.cvb-paper-scroller {
+  background: #0b1220;
+  border-radius: 14px;
+  padding: 12px;
+  overflow: hidden;
+}
+.cvb-paper-scale {
+  transform-origin: top left;
+}
+[dir='rtl'] .cvb-paper-scale {
+  transform-origin: top right;
+}
+
+/* ---------- The CV paper (A4 at 96dpi = 794 x 1123) ---------- */
+.cv-paper {
+  --accent: #0f3d3e;
+  --accent-soft: #e6efef;
+  width: 794px;
+  min-height: 1123px;
+  background: #fff;
+  color: #1f2937;
+  font-family: 'Inter', 'Cairo', 'BADR Naskh', Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.55;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+.cv-paper[dir='rtl'] {
+  font-family: 'Cairo', 'BADR Naskh', 'Inter', Arial, sans-serif;
+}
+.cv-paper h1,
+.cv-paper h2,
+.cv-paper h3,
+.cv-paper p {
+  margin: 0;
+}
+.cv-name {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.cv-role {
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+.cv-sec {
+  margin-top: 18px;
+}
+.cv-sec-h {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.cv-paper[dir='rtl'] .cv-sec-h {
+  letter-spacing: 0;
+  font-size: 15px;
+}
+.cv-entry {
+  margin-bottom: 10px;
+}
+.cv-entry-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+.cv-entry-title {
+  font-weight: 700;
+  font-size: 14px;
+}
+.cv-entry-org {
+  color: #4b5563;
+  font-weight: 600;
+}
+.cv-entry-date {
+  color: #6b7280;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.cv-entry-body {
+  color: #374151;
+  margin-top: 3px;
+  white-space: pre-line;
+}
+.cv-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.cv-chip {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.cv-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  font-size: 12px;
+}
+.cv-contact span {
+  unicode-bidi: plaintext;
+}
+.cv-photo {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.cv-list {
+  margin: 0;
+  padding-inline-start: 18px;
+}
+.cv-list li {
+  margin-bottom: 3px;
+}
+
+/* Template: Classic */
+.tpl-classic {
+  padding: 48px 56px;
+}
+.tpl-classic .cv-header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 16px;
+}
+.tpl-classic .cv-role {
+  color: var(--accent);
+}
+.tpl-classic .cv-contact {
+  margin-top: 8px;
+  color: #4b5563;
+}
+.tpl-classic .cv-sec-h {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 4px;
+}
+
+/* Template: Sidebar */
+.tpl-sidebar {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  min-height: 1123px;
+}
+.tpl-sidebar .cv-side {
+  background: var(--accent);
+  color: #fff;
+  padding: 40px 24px;
+}
+.tpl-sidebar .cv-side .cv-sec-h {
+  color: #fff;
+  opacity: 0.85;
+}
+.tpl-sidebar .cv-side .cv-chip {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+.tpl-sidebar .cv-side .cv-contact {
+  flex-direction: column;
+  gap: 6px;
+}
+.tpl-sidebar .cv-main {
+  padding: 40px 32px;
+}
+.tpl-sidebar .cv-photo {
+  display: block;
+  margin: 0 auto 16px;
+  border: 4px solid rgba(255, 255, 255, 0.25);
+}
+.tpl-sidebar .cv-role {
+  color: var(--accent);
+}
+
+/* Template: Minimal */
+.tpl-minimal {
+  padding: 64px 72px;
+}
+.tpl-minimal .cv-header {
+  text-align: center;
+}
+.tpl-minimal .cv-name {
+  font-weight: 300;
+  font-size: 34px;
+  letter-spacing: 0.04em;
+}
+.tpl-minimal[dir='rtl'] .cv-name {
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.tpl-minimal .cv-role {
+  color: #6b7280;
+  font-weight: 400;
+}
+.tpl-minimal .cv-contact {
+  justify-content: center;
+  color: #6b7280;
+  margin-top: 10px;
+}
+.tpl-minimal .cv-sec-h {
+  color: #111827;
+  text-align: center;
+}
+.tpl-minimal .cv-sec-h::after {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 2px;
+  background: var(--accent);
+  margin: 6px auto 0;
+}
+.tpl-minimal .cv-chips {
+  justify-content: center;
+}
+
+/* Template: Bold header */
+.tpl-bold .cv-header {
+  background: var(--accent);
+  color: #fff;
+  padding: 40px 56px 32px;
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+.tpl-bold .cv-role {
+  opacity: 0.9;
+}
+.tpl-bold .cv-contact {
+  margin-top: 10px;
+  opacity: 0.95;
+}
+.tpl-bold .cv-photo {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+}
+.tpl-bold .cv-body {
+  padding: 8px 56px 48px;
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 32px;
+}
+.tpl-bold .cv-sec-h {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tpl-bold .cv-sec-h::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+/* Thumbnails reuse the real templates at small scale */
+.cvb-tpl-thumb .cv-paper {
+  transform: scale(0.146);
+  transform-origin: top left;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+/* ATS badge on template cards */
+.cvb-ats {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #34d399;
+}
+
+/* Template: ATS — single column, plain headings, no graphics,
+   standard order, real text. Parsers read it top to bottom. */
+.tpl-ats {
+  padding: 48px 56px;
+  color: #111;
+  font-family: Arial, 'Cairo', 'BADR Naskh', sans-serif;
+}
+.tpl-ats[dir='rtl'] {
+  font-family: 'Cairo', 'BADR Naskh', Arial, sans-serif;
+}
+.tpl-ats .cv-name {
+  font-size: 26px;
+  font-weight: 700;
+}
+.tpl-ats .cv-role {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111;
+}
+.tpl-ats .cv-contact {
+  margin-top: 6px;
+  color: #111;
+}
+.tpl-ats .cv-contact span + span::before {
+  content: '| ';
+  color: #666;
+}
+.tpl-ats .cv-sec-h {
+  color: #111;
+  font-size: 14px;
+  border-bottom: 1px solid #111;
+  padding-bottom: 2px;
+}
+.tpl-ats .cv-photo {
+  display: none;
+}
