@@ -1,0 +1,42 @@
+name: Deploy BADR PDF to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --legacy-peer-deps
+      - run: npx vite build
+        env:
+          BASE_URL: /badr-pdf/
+          VITE_BRAND_NAME: BADR PDF
+          VITE_BRAND_LOGO: images/badr-logo.svg
+          VITE_FOOTER_TEXT: © 2026 BADR PDF — Based on BentoPDF (AGPL-3.0)
+          NODE_OPTIONS: --max-old-space-size=6144
+      - run: find dist -name '*.br' -delete -o -name '*.gz' -delete; touch dist/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
