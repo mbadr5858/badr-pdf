@@ -29,6 +29,7 @@ jobs:
           NODE_OPTIONS: --max-old-space-size=6144
       - run: node scripts/generate-i18n-pages.mjs
         env:
+          VITE_BRAND_NAME: BADR PDF
           BASE_URL: /badr-pdf/
           SITE_URL: https://mbadr5858.github.io/badr-pdf
           NODE_OPTIONS: --max-old-space-size=6144

@@ -267,7 +267,7 @@ function processFileForLanguage(
     title =
       tools[translationKey].pageTitle ||
       (tools[translationKey].name
-        ? `${tools[translationKey].name} - BentoPDF`
+        ? `${tools[translationKey].name} - ${BRAND_NAME}`
         : null);
     description = tools[translationKey].subtitle;
   }

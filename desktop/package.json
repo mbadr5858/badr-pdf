@@ -1,0 +1,38 @@
+{
+  "name": "badr-pdf-desktop",
+  "productName": "BADR PDF",
+  "version": "1.0.0",
+  "description": "BADR PDF — Arabic-first PDF toolkit",
+  "author": "mbadr5858",
+  "license": "AGPL-3.0-only",
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win --x64 --publish never"
+  },
+  "devDependencies": {
+    "electron": "33.2.1",
+    "electron-builder": "25.1.8"
+  },
+  "build": {
+    "appId": "io.github.mbadr5858.badrpdf",
+    "productName": "BADR PDF",
+    "artifactName": "BADR-PDF-${version}-${arch}-${os}.${ext}",
+    "directories": { "output": "release" },
+    "files": ["main.cjs", "package.json"],
+    "extraResources": [{ "from": "web", "to": "web" }],
+    "win": {
+      "icon": "icon.png",
+      "target": [{ "target": "nsis", "arch": ["x64"] }, { "target": "portable", "arch": ["x64"] }]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "BADR PDF",
+      "artifactName": "BADR-PDF-Setup.${ext}"
+    },
+    "portable": { "artifactName": "BADR-PDF-Portable.${ext}" }
+  }
+}

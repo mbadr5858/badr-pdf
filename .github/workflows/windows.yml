@@ -1,0 +1,54 @@
+name: Build BADR PDF for Windows
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: windows
+  cancel-in-progress: true
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --legacy-peer-deps
+      - name: Build web app
+        shell: bash
+        run: npx vite build && node scripts/generate-i18n-pages.mjs
+        env:
+          VITE_BRAND_NAME: BADR PDF
+          VITE_BRAND_LOGO: images/badr-logo.svg
+          VITE_FOOTER_TEXT: © 2026 BADR PDF — Based on BentoPDF (AGPL-3.0)
+          NODE_OPTIONS: --max-old-space-size=6144
+      - name: Copy web app into desktop app
+        shell: bash
+        run: |
+          rm -rf desktop/web
+          cp -r dist desktop/web
+          find desktop/web \( -name '*.br' -o -name '*.gz' \) -delete
+      - name: Build Windows installer
+        working-directory: desktop
+        shell: bash
+        run: |
+          npm install --no-audit --no-fund
+          npm run dist:win
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+      - name: Publish to the "windows-latest" release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: windows-latest
+          name: BADR PDF — Windows
+          body: |
+            BADR-PDF-Setup.exe — installer (desktop + Start menu shortcuts).
+            BADR-PDF-Portable.exe — runs without installing.
+          make_latest: false
+          files: |
+            desktop/release/BADR-PDF-Setup.exe
+            desktop/release/BADR-PDF-Portable.exe
