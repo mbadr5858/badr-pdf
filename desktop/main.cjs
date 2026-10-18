@@ -61,11 +61,22 @@ function isFile(p) {
 // Map a URL path to a file, the same way the website's server does:
 //   /ar/merge-pdf -> ar/merge-pdf.html,  /ar/ -> ar/index.html
 function resolveFile(urlPath) {
-  let rel = decodeURIComponent(urlPath).replace(/^\/+/, '');
+  let rel;
+  try {
+    rel = decodeURIComponent(urlPath).replace(/^\/+/, '');
+  } catch {
+    return null;
+  }
+
   const base = path.normalize(path.join(WEB_ROOT, rel));
-  if (!base.startsWith(WEB_ROOT)) return null; // no escaping the app folder
+  const relative = path.relative(WEB_ROOT, base);
+
+  // Reject traversal outside the packaged web root, including sibling paths
+  // whose names merely share the same string prefix as WEB_ROOT.
+  if (relative.startsWith('..') || path.isAbsolute(relative)) return null;
+
   const candidates = [base, base + '.html', path.join(base, 'index.html')];
-  for (const c of candidates) if (isFile(c)) return c;
+  for (const candidate of candidates) if (isFile(candidate)) return candidate;
   return null;
 }
 
