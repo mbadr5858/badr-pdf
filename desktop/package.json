@@ -1,8 +1,8 @@
 {
   "name": "badr-pdf-desktop",
   "productName": "BADR PDF",
-  "version": "1.0.0",
-  "description": "BADR PDF — Arabic-first PDF toolkit",
+  "version": "1.1.0",
+  "description": "BADR PDF — PDF viewer, editor tools and Office converters",
   "author": "mbadr5858",
   "license": "AGPL-3.0-only",
   "main": "main.cjs",
@@ -18,12 +18,35 @@
     "appId": "io.github.mbadr5858.badrpdf",
     "productName": "BADR PDF",
     "artifactName": "BADR-PDF-${version}-${arch}-${os}.${ext}",
-    "directories": { "output": "release" },
-    "files": ["main.cjs", "package.json"],
-    "extraResources": [{ "from": "web", "to": "web" }],
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.cjs",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "web",
+        "to": "web"
+      }
+    ],
     "win": {
       "icon": "icon.png",
-      "target": [{ "target": "nsis", "arch": ["x64"] }, { "target": "portable", "arch": ["x64"] }]
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
     },
     "nsis": {
       "oneClick": false,
@@ -33,6 +56,16 @@
       "shortcutName": "BADR PDF",
       "artifactName": "BADR-PDF-Setup.${ext}"
     },
-    "portable": { "artifactName": "BADR-PDF-Portable.${ext}" }
+    "portable": {
+      "artifactName": "BADR-PDF-Portable.${ext}"
+    },
+    "fileAssociations": [
+      {
+        "ext": "pdf",
+        "name": "PDF Document",
+        "description": "PDF Document",
+        "role": "Viewer"
+      }
+    ]
   }
 }
